@@ -1,0 +1,118 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="exi的避难所 — 我的个人网站，收录作品与日常。">
+  <title>exi的避难所</title>
+  <link rel="icon" type="image/svg+xml" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 64 64'><defs><linearGradient id='g' x1='0' y1='0' x2='1' y2='1'><stop offset='0' stop-color='%236FA8DC'/><stop offset='1' stop-color='%238F86C9'/></linearGradient></defs><rect width='64' height='64' rx='16' fill='url(%23g)'/><text x='32' y='44' font-size='34' text-anchor='middle' fill='white' font-family='sans-serif' font-weight='bold'>e</text></svg>">
+  <meta name="theme-color" content="#A9C7E8">
+  <link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+  <!-- 背景层：背景视频壁纸 + 微光粒子（由 main.js 注入） -->
+  <div class="bg" id="bg" aria-hidden="true"></div>
+
+  <!-- 顶部固定导航 -->
+  <header class="nav" id="nav">
+    <a class="nav__brand" href="index.html">exi的避难所</a>
+    <nav class="nav__links" id="navLinks" aria-label="主导航">
+      <a href="index.html">首页</a>
+      <a href="index.html#about">关于</a>
+      <a href="works.html">作品</a>
+      <a href="blog.html">博客</a>
+    </nav>
+    <button class="nav__toggle" id="navToggle" aria-label="打开菜单" aria-expanded="false" aria-controls="navLinks">
+      <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" aria-hidden="true">
+        <line x1="4" y1="7" x2="20" y2="7"/><line x1="4" y1="12" x2="20" y2="12"/><line x1="4" y1="17" x2="20" y2="17"/>
+      </svg>
+    </button>
+  </header>
+
+  <main>
+    <!-- Hero：居中文字 -->
+    <section class="hero container">
+      <div class="hero__text">
+        <p class="hero__greet">Welcome to my little corner</p>
+        <h1 class="hero__title">你好，我是 <em>exi</em></h1>
+        <p class="hero__desc">（个人简介占位：这里将展示你的自我介绍文案。）</p>
+        <div class="hero__actions">
+          <a class="btn btn--primary" href="works.html">看看我的作品</a>
+          <a class="btn btn--ghost" href="blog.html">逛逛博客</a>
+        </div>
+      </div>
+      <div class="hero__scroll" aria-hidden="true">向下滚动</div>
+    </section>
+
+    <!-- 关于我：居中文字 -->
+    <section class="section" id="about">
+      <div class="container">
+        <div class="about">
+          <div class="about__body reveal" data-delay="1">
+            <h2 class="about__name">关于我 · exi</h2>
+            <p class="about__bio">（个人简介占位：这里将展示你的自我介绍。）</p>
+            <div class="about__meta">
+              <div class="about__meta-item">
+                <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+                  <path d="M19 14c1.49-1.46 3-3.21 3-5.5A5.5 5.5 0 0 0 16.5 3c-1.76 0-3 .5-4.5 2-1.5-1.5-2.74-2-4.5-2A5.5 5.5 0 0 0 2 8.5c0 2.3 1.5 4.05 3 5.5l7 7Z"/>
+                </svg>
+                <span>兴趣爱好：动漫 · 二次元</span>
+              </div>
+            </div>
+            <p class="about__sign">路漫漫其修远兮，吾将上下而求索</p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- 首页作品概览：2×2 网格 -->
+    <section class="section" id="works">
+      <div class="container">
+        <div class="section__head reveal">
+          <p class="section__eyebrow">Works</p>
+          <h2 class="section__title">精选作品</h2>
+          <p class="section__sub">一些我做过的东西（当前为占位内容，待替换为真实作品）。</p>
+        </div>
+        <div class="works-grid" id="worksPreview">
+          <!-- 由 js/works.js 渲染前 4 件作品 -->
+        </div>
+        <div class="section__more reveal">
+          <a class="btn btn--ghost" href="works.html">查看全部作品</a>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <!-- 页脚 -->
+  <footer class="footer">
+    <p class="footer__brand">exi的避难所</p>
+    <p class="footer__text">© <span id="year"></span> exi · 路漫漫其修远兮，吾将上下而求索</p>
+  </footer>
+
+  <!-- 背景音乐控制 -->
+  <div class="bgm" id="bgm">
+    <div class="bgm__hint" id="bgmHint" role="status"></div>
+    <div class="bgm__bar">
+      <button class="bgm__btn" id="bgmBtn" aria-label="播放背景音乐">
+        <svg id="bgmIconPlay" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true">
+          <path d="M8 5.14v13.72a1 1 0 0 0 1.52.86l11-6.86a1 1 0 0 0 0-1.72l-11-6.86A1 1 0 0 0 8 5.14z"/>
+        </svg>
+        <svg id="bgmIconPause" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true" hidden>
+          <path d="M7 5h3.5v14H7zM13.5 5H17v14h-3.5z"/>
+        </svg>
+      </button>
+      <span class="bgm__now" id="bgmNow" title="">♪ 随机播放</span>
+      <button class="bgm__next" id="bgmNext" aria-label="下一首">
+        <svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true">
+          <path d="M6 18l8.5-6L6 6v12zM16 6v12h2V6h-2z"/>
+        </svg>
+      </button>
+    </div>
+    <audio id="bgmAudio" preload="none"></audio>
+  </div>
+
+  <script src="js/main.js"></script>
+  <script src="js/works.js"></script>
+  <script src="js/bgm.js"></script>
+</body>
+</html>

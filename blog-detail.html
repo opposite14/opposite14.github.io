@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="exi的避难所 — 文章详情。">
+  <title>文章 · exi的避难所</title>
+  <link rel="icon" type="image/svg+xml" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 64 64'><defs><linearGradient id='g' x1='0' y1='0' x2='1' y2='1'><stop offset='0' stop-color='%236FA8DC'/><stop offset='1' stop-color='%238F86C9'/></linearGradient></defs><rect width='64' height='64' rx='16' fill='url(%23g)'/><text x='32' y='44' font-size='34' text-anchor='middle' fill='white' font-family='sans-serif' font-weight='bold'>e</text></svg>">
+  <meta name="theme-color" content="#A9C7E8">
+  <link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+  <div class="bg" id="bg" aria-hidden="true"></div>
+
+  <header class="nav" id="nav">
+    <a class="nav__brand" href="index.html">exi的避难所</a>
+    <nav class="nav__links" id="navLinks" aria-label="主导航">
+      <a href="index.html">首页</a>
+      <a href="index.html#about">关于</a>
+      <a href="works.html">作品</a>
+      <a href="blog.html">博客</a>
+    </nav>
+    <button class="nav__toggle" id="navToggle" aria-label="打开菜单" aria-expanded="false" aria-controls="navLinks">
+      <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" aria-hidden="true">
+        <line x1="4" y1="7" x2="20" y2="7"/><line x1="4" y1="12" x2="20" y2="12"/><line x1="4" y1="17" x2="20" y2="17"/>
+      </svg>
+    </button>
+  </header>
+
+  <main class="container container--narrow article">
+    <a class="back-link" href="blog.html">← 返回博客列表</a>
+    <div id="article" style="margin-top: 28px;">
+      <!-- 由 js/blog.js 按 ?id= 渲染单篇文章 -->
+    </div>
+  </main>
+
+  <footer class="footer">
+    <p class="footer__brand">exi的避难所</p>
+    <p class="footer__text">© <span id="year"></span> exi · 路漫漫其修远兮，吾将上下而求索</p>
+  </footer>
+
+  <div class="bgm" id="bgm">
+    <div class="bgm__hint" id="bgmHint" role="status"></div>
+    <div class="bgm__bar">
+      <button class="bgm__btn" id="bgmBtn" aria-label="播放背景音乐">
+        <svg id="bgmIconPlay" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true">
+          <path d="M8 5.14v13.72a1 1 0 0 0 1.52.86l11-6.86a1 1 0 0 0 0-1.72l-11-6.86A1 1 0 0 0 8 5.14z"/>
+        </svg>
+        <svg id="bgmIconPause" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true" hidden>
+          <path d="M7 5h3.5v14H7zM13.5 5H17v14h-3.5z"/>
+        </svg>
+      </button>
+      <span class="bgm__now" id="bgmNow" title="">♪ 随机播放</span>
+      <button class="bgm__next" id="bgmNext" aria-label="下一首">
+        <svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true">
+          <path d="M6 18l8.5-6L6 6v12zM16 6v12h2V6h-2z"/>
+        </svg>
+      </button>
+    </div>
+    <audio id="bgmAudio" preload="none"></audio>
+  </div>
+
+  <script src="js/main.js"></script>
+  <script src="js/blog.js"></script>
+  <script src="js/bgm.js"></script>
+</body>
+</html>
