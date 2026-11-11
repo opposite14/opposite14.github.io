@@ -8,11 +8,6 @@
 (function () {
   'use strict';
 
-  /* 大文件（音乐/视频）走 jsDelivr CDN 加速：国内访问 GitHub Pages 不稳定，本地预览用相对路径 */
-  var CDN_BASE = (location.hostname === 'localhost' || location.hostname === '127.0.0.1')
-    ? ''
-    : 'https://cdn.jsdelivr.net/gh/opposite14/opposite14.github.io@main/';
-
   document.addEventListener('DOMContentLoaded', function () {
     const audio = document.getElementById('bgmAudio');
     const btn = document.getElementById('bgmBtn');
@@ -75,7 +70,7 @@
     function loadSong(song) {
       if (!song) return;
       current = song;
-      audio.src = CDN_BASE + 'assets/music/' + encodeURIComponent(song.file);
+      audio.src = 'assets/music/' + encodeURIComponent(song.file);
       setNow(song);
     }
 
