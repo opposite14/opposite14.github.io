@@ -27,6 +27,7 @@
     let current = null;    // 当前曲目
     let started = false;   // 用户是否已开启声音（已交互/已点播放）
     let hintTimer = null;
+    let errorRetries = 0;   // 单曲加载失败自动换歌的重试计数（防死循环）
 
     function showHint(text, sticky) {
       if (!hint) return;
@@ -128,6 +129,7 @@
       } else {
         /* 首次点击 / 静音播放中 / 暂停中 → 开启声音并播放 */
         unmute();
+        showHint('正在加载音乐…', false);
         play();
       }
     }
@@ -174,6 +176,14 @@
     audio.addEventListener('pause', updateButton);
     audio.addEventListener('ended', function () {
       if (started) playRandom();
+    });
+    /* 单曲加载失败（404/网络抖动/超时）：自动换下一首，最多重试 3 次避免死循环 */
+    audio.addEventListener('error', function () {
+      if (!songs.length || songs.length === 1) return;
+      errorRetries++;
+      if (errorRetries > 3) return;
+      loadSong(pickRandom());
+      play();
     });
 
     /* 加载音乐清单 */
