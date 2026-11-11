@@ -5,11 +5,6 @@
 (function () {
   'use strict';
 
-  /* 大文件（音乐/视频）走 jsDelivr CDN 加速：国内访问 GitHub Pages 不稳定，本地预览用相对路径 */
-  var CDN_BASE = (location.hostname === 'localhost' || location.hostname === '127.0.0.1')
-    ? ''
-    : 'https://cdn.jsdelivr.net/gh/opposite14/opposite14.github.io@main/';
-
   /* ---------------------------------------------------------------
      工具函数
      --------------------------------------------------------------- */
@@ -38,7 +33,7 @@
     video.preload = 'auto';
     video.setAttribute('aria-hidden', 'true');
     const vSrc = document.createElement('source');
-    vSrc.src = CDN_BASE + 'assets/video/background.mp4';
+    vSrc.src = 'assets/video/background.mp4';
     vSrc.type = 'video/mp4';
     video.appendChild(vSrc);
     bg.appendChild(video);
